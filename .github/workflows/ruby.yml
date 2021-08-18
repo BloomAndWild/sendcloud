@@ -1,0 +1,19 @@
+name: Ruby
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.7.x
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+        bundler-cache: true
+    - name: Run RSpec
+      run: |
+        gem install bundler
+        bundle install --retry 3
+        bundle exec rake
