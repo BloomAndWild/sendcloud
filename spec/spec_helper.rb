@@ -5,6 +5,7 @@ require "vcr"
 require "bundler/setup"
 require "sendcloud"
 require "sendcloud/config"
+require "sendcloud/client"
 
 Dotenv.load
 
