@@ -4,10 +4,10 @@ module Sendcloud
       content_type: "application/json"
     }.freeze
 
-    attr_reader :response, :payload
+    attr_reader :response, :options
 
-    def initialize(payload = {})
-      @payload = payload
+    def initialize(**options)
+      @options = options
     end
 
     def execute
@@ -40,6 +40,10 @@ module Sendcloud
 
     def api_url
       base_url + endpoint
+    end
+
+    def payload
+      options[:payload]
     end
 
     def headers
