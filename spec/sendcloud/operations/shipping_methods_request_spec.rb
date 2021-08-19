@@ -19,6 +19,7 @@ RSpec.describe Sendcloud::Operations::ShippingMethodsRequest do
         aggregate_failures do
           expect(subject.response.status).to eq(200)
           expect(result).to be_instance_of(Array)
+          expect(result.first.keys).to include(:id, :name, :carrier, :price)
 
           # "Unstamped letter" is the test shipping method that we
           # can expect to remain constant over time
@@ -26,7 +27,6 @@ RSpec.describe Sendcloud::Operations::ShippingMethodsRequest do
           expect(result.find { |sm| sm[:name] == "Unstamped letter" }).to match(
             hash_including(
               {
-                id: 8,
                 name: "Unstamped letter",
                 carrier: "sendcloud",
                 price: 0
