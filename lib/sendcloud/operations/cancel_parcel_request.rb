@@ -1,7 +1,7 @@
 module Sendcloud
   module Operations
     class CancelParcelRequest < Operation
-      protected
+      private
 
       def http_method
         :post
@@ -14,8 +14,6 @@ module Sendcloud
       def parcel_id
         options[:parcel_id]
       end
-
-      private
 
       def handle_error(body)
         case response.status
