@@ -1,7 +1,7 @@
 module Sendcloud
   class Operation
     include Errors
-    
+
     DEFAULT_HEADERS = {
       content_type: "application/json"
     }.freeze
@@ -20,7 +20,7 @@ module Sendcloud
       @response = http_client.run_request(http_method, api_url, json_payload, headers)
       body = JSON.parse(response.body, symbolize_names: true)
       return handle_response_body(body) if response.success?
-      
+
       handle_error(body)
     end
 

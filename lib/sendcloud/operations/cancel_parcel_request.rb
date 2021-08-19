@@ -1,7 +1,6 @@
 module Sendcloud
   module Operations
     class CancelParcelRequest < Operation
-
       protected
 
       def http_method
@@ -11,7 +10,7 @@ module Sendcloud
       def endpoint
         "parcels/#{parcel_id}/cancel"
       end
-      
+
       def parcel_id
         options[:parcel_id]
       end
@@ -19,9 +18,10 @@ module Sendcloud
       private
 
       def handle_error(body)
-        if response.status == 400
+        case response.status
+        when 400
           raise BadRequestError.new(response: response, body: body)
-        elsif response.status == 410
+        when 410
           raise DeletedError.new(response: response, body: body)
         else
           super
