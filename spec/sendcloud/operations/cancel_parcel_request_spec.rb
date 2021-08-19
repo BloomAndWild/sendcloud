@@ -26,6 +26,41 @@ RSpec.describe Sendcloud::Operations::CancelParcelRequest do
       end
     end
 
+    context "when parcel is valid" do
+      let(:parcel_id) { "124320972" }
+
+      it "cancels the parcel" do
+        VCR.use_cassette("cancel_parcel_request/valid_parcel") do
+          result = subject.execute
+
+          aggregate_failures do
+            expect(subject.response.status).to eq(200)
+            expect(result).to match(hash_including(
+              message: "Parcel has been cancelled",
+              status: "cancelled"
+            ))
+          end
+        end
+      end
+    end
+
+    context "when parcel is deleted" do
+      let(:parcel_id) { "124309702" }
+
+      it "raise deleted error" do
+        VCR.use_cassette("cancel_parcel_request/deleted_parcel") do
+          aggregate_failures do
+            expect {
+              subject.execute
+            }.to raise_error(
+              Sendcloud::Errors::DeletedError, "410 deleted Parcel has been deleted"
+            )
+            expect(subject.response.status).to eq(410)
+          end
+        end
+      end
+    end
+
     context "when parcel is already cancelled" do
       let(:parcel_id) { "124068875" }
 
