@@ -21,6 +21,8 @@ module Sendcloud
       def handle_error(body)
         if response.status == 400
           raise BadRequestError.new(response: response, body: body)
+        elsif response.status == 410
+          raise DeletedError.new(response: response, body: body)
         else
           super
         end
