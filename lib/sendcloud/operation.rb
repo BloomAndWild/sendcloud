@@ -20,9 +20,8 @@ module Sendcloud
       @response = http_client.run_request(http_method, api_url, json_payload, headers)
       body = JSON.parse(response.body, symbolize_names: true)
       return handle_response_body(body) if response.success?
-
-      raise BadRequestError.new(response: response, body: body) if response.status == 400
-      raise ResponseError.new(payload: payload, body: body)
+      
+      handle_error(body)
     end
 
     protected
@@ -36,6 +35,10 @@ module Sendcloud
     end
 
     private
+
+    def handle_error(body)
+      raise ResponseError.new(payload: payload, body: body)
+    end
 
     def handle_response_body(body)
       body

@@ -15,6 +15,16 @@ module Sendcloud
       def parcel_id
         options[:parcel_id]
       end
+
+      private
+
+      def handle_error(body)
+        if response.status == 400
+          raise BadRequestError.new(response: response, body: body)
+        else
+          super
+        end
+      end
     end
   end
 end
