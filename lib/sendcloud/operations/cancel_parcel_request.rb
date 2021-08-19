@@ -20,9 +20,9 @@ module Sendcloud
       def handle_error(body)
         case response.status
         when 400
-          raise BadRequestError.new(response: response, body: body)
+          raise BadRequestError.new(status: response.status, body: body)
         when 410
-          raise DeletedError.new(response: response, body: body)
+          raise DeletedError.new(status: response.status, body: body)
         else
           super
         end

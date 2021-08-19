@@ -1,10 +1,10 @@
 module Sendcloud
   module Errors
     class ClientError < StandardError
-      attr_reader :body, :response
+      attr_reader :body, :status
 
-      def initialize(response:, body:)
-        @response = response
+      def initialize(status:, body:)
+        @status = status
         @body = body
 
         super(build_message)
@@ -13,7 +13,7 @@ module Sendcloud
       private
 
       def build_message
-        "#{response.status} #{body[:status]} #{body[:message]}"
+        "#{status} #{body[:status]} #{body[:message]}"
       end
     end
   end
