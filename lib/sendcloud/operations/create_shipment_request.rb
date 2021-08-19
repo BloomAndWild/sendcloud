@@ -25,9 +25,9 @@ module Sendcloud
       end
 
       def execute_request(request)
-        result = request.execute
+        request.execute
+      ensure
         @response = request.response
-        result
       end
     end
   end
