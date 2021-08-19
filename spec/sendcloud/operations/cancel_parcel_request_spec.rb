@@ -29,7 +29,7 @@ RSpec.describe Sendcloud::Operations::CancelParcelRequest do
     context "when parcel is already cancelled" do
       let(:parcel_id) { "124068875" }
 
-      it "raises a not found exception" do
+      it "raises a bad request exception" do
         VCR.use_cassette("cancel_parcel_request/already_cancelled") do
           aggregate_failures do
             expect {
