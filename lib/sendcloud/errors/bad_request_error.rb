@@ -3,7 +3,7 @@ module Sendcloud
     class BadRequestError < StandardError
       attr_reader :payload, :body
 
-      def initialize(payload:, body:)
+      def initialize(payload:, response:, body:)
         @payload = payload
         @body = body
 
@@ -13,7 +13,7 @@ module Sendcloud
       private
 
       def build_message
-        "#{body[:error][:code]} #{body[:error][:message]}"
+        "#{response.status} #{body[:status]} #{body[:message]}"
       end
     end
   end

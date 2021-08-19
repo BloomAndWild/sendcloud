@@ -3,9 +3,8 @@ module Sendcloud
     class ResponseError < StandardError
       attr_reader :payload, :body
 
-      def initialize(payload:, response:, body:)
+      def initialize(payload:, body:)
         @payload = payload
-        @response = response
         @body = body
 
         super(build_message)
@@ -14,7 +13,7 @@ module Sendcloud
       private
 
       def build_message
-        "#{response.status} #{body[:status]} #{body[:message]}"
+        "#{body[:error][:code]} #{body[:error][:message]}"
       end
     end
   end
