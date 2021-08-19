@@ -1,10 +1,10 @@
 module Sendcloud
   module Errors
     class BadRequestError < StandardError
-      attr_reader :payload, :body
+      attr_reader :body, :response
 
-      def initialize(payload:, response:, body:)
-        @payload = payload
+      def initialize(response:, body:)
+        @response = response
         @body = body
 
         super(build_message)
