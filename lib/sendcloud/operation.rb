@@ -1,5 +1,7 @@
 module Sendcloud
   class Operation
+    include Errors
+    
     DEFAULT_HEADERS = {
       content_type: "application/json"
     }.freeze
@@ -20,7 +22,7 @@ module Sendcloud
       binding.pry
       return handle_response_body(body) if response.success?
 
-      raise BadRequestError.new(payload: payload, body: body) if response.status == 400
+      raise BadRequestError.new(response: response, body: body) if response.status == 400
       raise ResponseError.new(payload: payload, body: body)
     end
 
