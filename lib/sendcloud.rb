@@ -16,6 +16,5 @@ require "sendcloud/operation"
 require "sendcloud/operations/shipping_methods_request"
 require "sendcloud/operations/cancel_parcel_request"
 
-
 module Sendcloud
 end
