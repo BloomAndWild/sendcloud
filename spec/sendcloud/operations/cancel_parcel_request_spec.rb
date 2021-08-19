@@ -35,6 +35,10 @@ RSpec.describe Sendcloud::Operations::CancelParcelRequest do
 
           aggregate_failures do
             expect(subject.response.status).to eq(200)
+            
+            expect(result).to be_instance_of(Hash)
+            expect(result.keys).to include(:message, :status)
+
             expect(result).to match(hash_including(
               message: "Parcel has been cancelled",
               status: "cancelled"
