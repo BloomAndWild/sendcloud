@@ -11,6 +11,7 @@ require "sendcloud/response_error"
 
 require "sendcloud/operations/create_parcel_request"
 require "sendcloud/operations/printer_label_request"
+require "sendcloud/operations/create_shipment_request"
 
 module Sendcloud
 end
