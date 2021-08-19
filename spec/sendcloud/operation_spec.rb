@@ -1,6 +1,7 @@
 require "spec_helper"
 
 RSpec.describe Sendcloud::Operation do
+  let(:default_base_url) { "https://panel.sendcloud.sc/api/v2/" }
   let(:default_class) do
     Class.new(described_class) do
       def http_method
@@ -16,7 +17,7 @@ RSpec.describe Sendcloud::Operation do
   context "authentication" do
     context "with valid credentials" do
       before do
-        configure_client
+        configure_client(base_url: default_base_url)
       end
 
       it "returns 200 response" do
@@ -33,7 +34,7 @@ RSpec.describe Sendcloud::Operation do
 
     context "with invalid credentials" do
       before do
-        configure_client(public_key: "broken", secret_key: "wrong")
+        configure_client(base_url: default_base_url, public_key: "broken", secret_key: "wrong")
       end
 
       it "raises an exception" do
