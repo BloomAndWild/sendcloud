@@ -45,3 +45,4 @@ config/master.key
 .DS_Store
 .rspec_status
 .rakeTasks
+.idea
