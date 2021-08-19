@@ -2,6 +2,7 @@ require "spec_helper"
 
 RSpec.describe Sendcloud::Operation do
   let(:default_base_url) { "https://panel.sendcloud.sc/api/v2/" }
+
   let(:default_class) do
     Class.new(described_class) do
       def http_method
