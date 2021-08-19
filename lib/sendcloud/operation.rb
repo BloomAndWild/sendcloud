@@ -19,7 +19,6 @@ module Sendcloud
       json_payload = JSON.generate(payload)
       @response = http_client.run_request(http_method, api_url, json_payload, headers)
       body = JSON.parse(response.body, symbolize_names: true)
-      binding.pry
       return handle_response_body(body) if response.success?
 
       raise BadRequestError.new(response: response, body: body) if response.status == 400
