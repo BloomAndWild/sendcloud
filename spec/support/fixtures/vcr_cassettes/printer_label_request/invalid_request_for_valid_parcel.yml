@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://panel.sendcloud.sc/api/v2/labels/label_printer/124292020
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.7.0
+      Authorization:
+      - Basic <BASIC_AUTH_CREDENTIALS>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Thu, 19 Aug 2021 15:07:38 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '111'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Vary:
+      - Accept, Origin, Cookie
+      Allow:
+      - GET, HEAD, OPTIONS
+      X-Sendcloud-Client-Latest-Version-Windows:
+      - 1.0.4
+      X-Sendcloud-Client-Latest-Version-Macos:
+      - 1.0.5
+      X-Sendcloud-Client-Latest-Version-Linux:
+      - 1.0.2
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":404,"request":"api/v2/labels/label_printer/1","message":"No
+        Parcel matches the given query."}}'
+  recorded_at: Thu, 19 Aug 2021 15:07:38 GMT
+recorded_with: VCR 6.0.0

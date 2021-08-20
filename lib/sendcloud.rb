@@ -13,6 +13,9 @@ require "sendcloud/errors/bad_request_error"
 require "sendcloud/errors/deleted_error"
 
 require "sendcloud/operation"
+require "sendcloud/operations/create_parcel_request"
+require "sendcloud/operations/create_shipment_request"
+require "sendcloud/operations/printer_label_request"
 require "sendcloud/operations/shipping_methods_request"
 require "sendcloud/operations/cancel_parcel_request"
 

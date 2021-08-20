@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://panel.sendcloud.sc/api/v2/parcels
+    body:
+      encoding: UTF-8
+      string: '{"parcel":{"name":"John Doe","company_name":"Bloom&Wild","address":"Insulindelaan","house_number":"115","city":"Eindhoven","postal_code":"5642CV","telephone":"+31612345678","email":"hello@bloomandwild.com","data":[],"country":"NL","order_number":"1234567890","shipping_method_checkout_name":"Unstamped
+        letter","request_label":true}}'
+    headers:
+      User-Agent:
+      - Faraday v1.7.0
+      Authorization:
+      - Basic <BASIC_AUTH_CREDENTIALS>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 19 Aug 2021 15:13:41 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '106'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Allow:
+      - GET, POST, PUT, HEAD, OPTIONS
+      X-Sendcloud-Client-Latest-Version-Windows:
+      - 1.0.4
+      X-Sendcloud-Client-Latest-Version-Macos:
+      - 1.0.5
+      X-Sendcloud-Client-Latest-Version-Linux:
+      - 1.0.2
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      Vary:
+      - Origin, Cookie
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":400,"request":"api/v2/parcels","message":"shipping_method:
+        \"This field is required.\""}}'
+  recorded_at: Thu, 19 Aug 2021 15:13:41 GMT
+recorded_with: VCR 6.0.0
