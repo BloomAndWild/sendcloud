@@ -4,7 +4,6 @@ module Sendcloud
   module Operations
     class CreateParcelRequest < Operation
       private
-      attr_reader :options
 
       def payload
         { parcel: options[:payload] }
