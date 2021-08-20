@@ -1,13 +1,15 @@
 module Sendcloud
   class Operation
+    include Errors
+
     DEFAULT_HEADERS = {
       content_type: "application/json"
     }.freeze
 
-    attr_reader :response, :payload
+    attr_reader :response, :options
 
-    def initialize(payload = {})
-      @payload = payload
+    def initialize(**options)
+      @options = options
     end
 
     def execute
@@ -19,7 +21,7 @@ module Sendcloud
       body = JSON.parse(response.body, symbolize_names: true)
       return handle_response_body(body) if response.success?
 
-      raise ResponseError.new(payload: payload, body: body)
+      handle_error(body)
     end
 
     protected
@@ -34,12 +36,20 @@ module Sendcloud
 
     private
 
+    def handle_error(body)
+      raise ResponseError.new(payload: payload, body: body, status: response.status)
+    end
+
     def handle_response_body(body)
       body
     end
 
     def api_url
       base_url + endpoint
+    end
+
+    def payload
+      options[:payload]
     end
 
     def headers
