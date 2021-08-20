@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://panel.sendcloud.sc/api/v2/parcels/124309702/cancel
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Faraday v1.7.0
+      Authorization:
+      - Basic <BASIC_AUTH_CREDENTIALS>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 410
+      message: Gone
+    headers:
+      Date:
+      - Thu, 19 Aug 2021 14:49:43 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '56'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Allow:
+      - POST, OPTIONS
+      X-Sendcloud-Client-Latest-Version-Windows:
+      - 1.0.4
+      X-Sendcloud-Client-Latest-Version-Macos:
+      - 1.0.5
+      X-Sendcloud-Client-Latest-Version-Linux:
+      - 1.0.2
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      Vary:
+      - Origin, Cookie
+    body:
+      encoding: UTF-8
+      string: '{"status":"deleted","message":"Parcel has been deleted"}'
+  recorded_at: Thu, 19 Aug 2021 14:49:43 GMT
+recorded_with: VCR 6.0.0

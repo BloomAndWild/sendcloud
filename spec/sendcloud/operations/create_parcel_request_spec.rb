@@ -68,7 +68,7 @@ RSpec.describe Sendcloud::Operations::CreateParcelRequest do
       it "raises an exception" do
         VCR.use_cassette("create_parcel_request/invalid_request") do
           aggregate_failures do
-            expect { subject.execute }.to raise_error(Sendcloud::ResponseError, '400 shipping_method: "This field is required."')
+            expect { subject.execute }.to raise_error(Sendcloud::Errors::ResponseError, '400 shipping_method: "This field is required."')
             expect(subject.response.status).to eq(400)
           end
         end

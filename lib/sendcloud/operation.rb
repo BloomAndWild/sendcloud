@@ -1,5 +1,7 @@
 module Sendcloud
   class Operation
+    include Errors
+
     DEFAULT_HEADERS = {
       content_type: "application/json"
     }.freeze
@@ -35,7 +37,7 @@ module Sendcloud
     private
 
     def handle_error(body)
-      raise ResponseError.new(payload: payload, body: body)
+      raise ResponseError.new(payload: payload, body: body, status: response.status)
     end
 
     def handle_response_body(body)

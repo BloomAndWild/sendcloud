@@ -56,7 +56,7 @@ RSpec.describe Sendcloud::Operations::CreateShipmentRequest do
         it "raises an exception" do
           VCR.use_cassette("create_parcel_request/invalid_request") do
             aggregate_failures do
-              expect { subject.execute }.to raise_error(Sendcloud::ResponseError)
+              expect { subject.execute }.to raise_error(Sendcloud::Errors::ResponseError)
               expect(subject.response.status).to eq(400)
             end
           end
@@ -68,7 +68,7 @@ RSpec.describe Sendcloud::Operations::CreateShipmentRequest do
           VCR.use_cassette("create_parcel_request/valid_request") do
             VCR.use_cassette("printer_label_request/invalid_request_for_valid_parcel") do
               aggregate_failures do
-                expect { subject.execute }.to raise_error(Sendcloud::ResponseError)
+                expect { subject.execute }.to raise_error(Sendcloud::Errors::ResponseError)
                 expect(subject.response.status).to eq(404)
               end
             end

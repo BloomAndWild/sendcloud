@@ -15,7 +15,7 @@ module Sendcloud
           Base64.strict_encode64(response.body)
         else
           body = JSON.parse(response.body, symbolize_names: true)
-          raise ResponseError.new(payload: payload, body: body)
+          handle_error(body)
         end
       end
 
