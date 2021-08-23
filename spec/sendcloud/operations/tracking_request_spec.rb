@@ -9,7 +9,7 @@ RSpec.describe Sendcloud::Operations::TrackingRequest do
   describe "#execute" do
     subject { described_class.new(parcel_id: parcel_id) }
 
-    context "with invalid parcel id" do
+    context "with an invalid parcel id" do
       let(:parcel_id) { "0" }
 
       it "raises a not found exception" do
@@ -26,10 +26,10 @@ RSpec.describe Sendcloud::Operations::TrackingRequest do
       end
     end
 
-    context "when parcel is valid" do
+    context "with a valid parcel ID" do
       let(:parcel_id) { "124320972" }
 
-      it "retrieves the parcel" do
+      it "retrieves the tracking information for the parcel" do
         VCR.use_cassette("tracking_request/valid_parcel_id") do
           result = subject.execute
 
