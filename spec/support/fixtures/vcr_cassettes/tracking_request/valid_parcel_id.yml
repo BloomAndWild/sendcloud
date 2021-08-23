@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://panel.sendcloud.sc/api/v2/parcels/124320972
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Faraday v1.7.0
+      Authorization:
+      - Basic <BASIC_AUTH_CREDENTIALS>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 23 Aug 2021 10:21:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Origin, Cookie
+      Allow:
+      - GET, PUT, PATCH, HEAD, OPTIONS
+      X-Sendcloud-Client-Latest-Version-Windows:
+      - 1.0.4
+      X-Sendcloud-Client-Latest-Version-Macos:
+      - 1.0.5
+      X-Sendcloud-Client-Latest-Version-Linux:
+      - 1.0.2
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: ASCII-8BIT
+      string: '{"parcel":{"id":124320972,"address":"Insulindelaan 115","address_2":"","address_divided":{"street":"Insulindelaan","house_number":"115"},"city":"Eindhoven","company_name":"Bloom&Wild","country":{"iso_2":"NL","iso_3":"NLD","name":"Netherlands"},"data":{},"date_created":"19-08-2021
+        15:52:16","date_announced":"19-08-2021 15:52:16","date_updated":"20-08-2021
+        03:20:35","email":"hello@bloomandwild.com","name":"John Doe","postal_code":"5642
+        CV","reference":"0","shipment":{"id":2,"name":"PostNL with signature 0-23kg"},"status":{"id":2000,"message":"Cancelled"},"to_service_point":null,"telephone":"+31612345678","tracking_number":"3SYZXG193621471","weight":"1.000","label":{"normal_printer":["https://panel.sendcloud.sc/api/v2/labels/normal_printer/124320972?start_from=0","https://panel.sendcloud.sc/api/v2/labels/normal_printer/124320972?start_from=1","https://panel.sendcloud.sc/api/v2/labels/normal_printer/124320972?start_from=2","https://panel.sendcloud.sc/api/v2/labels/normal_printer/124320972?start_from=3"],"label_printer":"https://panel.sendcloud.sc/api/v2/labels/label_printer/124320972"},"customs_declaration":{},"order_number":"1234567890","insured_value":0,"total_insured_value":0,"to_state":null,"customs_invoice_nr":"","customs_shipment_type":null,"parcel_items":[],"documents":[{"type":"label","size":"a6","link":"https://panel.sendcloud.sc/api/v2/parcels/124320972/documents/label"}],"type":"parcel","shipment_uuid":null,"shipping_method":2,"external_order_id":"124320972","external_shipment_id":"","external_reference":null,"is_return":false,"note":"","to_post_number":"","total_order_value":null,"total_order_value_currency":null,"colli_tracking_number":"3SYZXG193621471","colli_uuid":"2d170369-6d12-4111-994d-f3cbabf9527a","collo_nr":0,"collo_count":1,"awb_tracking_number":null,"box_number":null,"length":null,"width":null,"height":null,"shipping_method_checkout_name":"DHL
+        Express Domestic","carrier":{"code":"postnl"},"tracking_url":"https://tracking.sendcloud.sc/forward?carrier=postnl&code=3SYZXG193621471&destination=NL&lang=en-gb&source=NL&type=parcel&verification=5642+CV&created_at=2021-08-19"}}'
+  recorded_at: Mon, 23 Aug 2021 10:21:13 GMT
+recorded_with: VCR 6.0.0
