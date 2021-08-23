@@ -43,6 +43,10 @@ RSpec.describe Sendcloud::Operations::TrackingRequest do
                 tracking_url: "https://tracking.sendcloud.sc/forward?carrier=postnl&code=3SYZXG193621471&destination=NL&lang=en-gb&source=NL&type=parcel&verification=5642+CV&created_at=2021-08-19",
                 carrier: {
                   code: "postnl"
+                },
+                status: {
+                  id: 2000,
+                  message: "Cancelled"
                 }
               }
             )

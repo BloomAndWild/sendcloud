@@ -6,7 +6,8 @@ module Sendcloud
       TRACKING_PARAMS = [
         :tracking_number,
         :tracking_url,
-        :carrier
+        :carrier,
+        :status
       ].freeze
 
       private
