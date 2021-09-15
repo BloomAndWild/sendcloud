@@ -57,11 +57,11 @@ module Sendcloud
     end
 
     def public_key
-      config.public_key
+      options[:public_key] || config.public_key
     end
 
     def secret_key
-      config.secret_key
+      options[:secret_key] || config.secret_key
     end
 
     def base_url

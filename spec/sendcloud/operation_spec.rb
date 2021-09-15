@@ -53,5 +53,26 @@ RSpec.describe Sendcloud::Operation do
         end
       end
     end
+
+    context "with credentials as arguments" do
+      before do
+        # public_key and secret_key passed as arguments take precedence over the global config
+        configure_client(base_url: default_base_url, public_key: "broken", secret_key: "wrong")
+      end
+
+      it "returns 200 response" do
+        VCR.use_cassette("operation/credential_args") do
+          operation = default_class.new(
+            public_key: ENV.fetch("SENDCLOUD_PUBLIC_KEY"),
+            secret_key: ENV.fetch("SENDCLOUD_SECRET_KEY")
+          )
+
+          aggregate_failures do
+            expect { operation.execute }.not_to raise_error
+            expect(operation.response.status).to eq(200)
+          end
+        end
+      end
+    end
   end
 end
