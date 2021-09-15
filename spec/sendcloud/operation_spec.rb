@@ -63,8 +63,8 @@ RSpec.describe Sendcloud::Operation do
       it "returns 200 response" do
         VCR.use_cassette("operation/credential_args") do
           operation = default_class.new(
-            public_key: ENV.fetch("SENDCLOUD_PUBLIC_KEY"),
-            secret_key: ENV.fetch("SENDCLOUD_SECRET_KEY")
+            public_key: ENV.fetch("SENDCLOUD_PUBLIC_KEY", ""),
+            secret_key: ENV.fetch("SENDCLOUD_SECRET_KEY", "")
           )
 
           aggregate_failures do
