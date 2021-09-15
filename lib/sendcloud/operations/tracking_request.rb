@@ -7,7 +7,8 @@ module Sendcloud
         :tracking_number,
         :tracking_url,
         :carrier,
-        :status
+        :status,
+        :date_updated
       ].freeze
 
       private

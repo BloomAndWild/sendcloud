@@ -47,7 +47,8 @@ RSpec.describe Sendcloud::Operations::TrackingRequest do
                 status: {
                   id: 2000,
                   message: "Cancelled"
-                }
+                },
+                date_updated: "20-08-2021 03:20:35"
               }
             )
           end
