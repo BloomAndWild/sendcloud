@@ -17,17 +17,22 @@ module Sendcloud
       end
 
       def request_label(parcel_data)
-        execute_request(PrinterLabelRequest.new(parcel_id: parcel_data[:id]))
+        execute_request(PrinterLabelRequest, parcel_id: parcel_data[:id])
       end
 
       def create_parcel
-        execute_request(CreateParcelRequest.new(payload: payload))
+        execute_request(CreateParcelRequest, payload: payload)
       end
 
-      def execute_request(request)
+      def execute_request(request_class, params = {})
+        request = request_class.new(**request_params(params))
         request.execute
       ensure
         @response = request.response
+      end
+
+      def request_params(params = {})
+        params.merge(public_key: public_key, secret_key: secret_key)
       end
     end
   end
