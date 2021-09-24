@@ -10,25 +10,38 @@ module Sendcloud
       end
 
       def endpoint
-        params = if updated_after
-          "?updated_after=#{CGI.escape(updated_after)}"
-        else
-          ""
+        path = "parcels"
+
+        if request_params
+          path += "?#{request_params}"
         end
 
-        "parcels#{params}"
+        path
       end
 
       def http_method
         :get
       end
 
-      def updated_after
-        @updated_after ||= begin
-          return unless !!options[:updated_after]
+      def request_params
+        @request_params ||= begin
+          params = [
+            [:updated_after, updated_after],
+            [:cursor, cursor]
+          ].reject do |k,v|
+            v.nil?
+          end
 
-          options[:updated_after].iso8601
+          URI.encode_www_form(params)
         end
+      end
+
+      def updated_after
+        options[:updated_after]&.iso8601
+      end
+
+      def cursor
+        options[:cursor]
       end
     end
   end

@@ -18,6 +18,19 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
           expect(result.length).to eq(23)
         end
       end
+
+      context "when cursor is provided" do
+        let(:cursor) { "some_next_page_token" }
+        subject { described_class.new(cursor: cursor) }
+
+        it "includes cursor in the request URL" do
+          VCR.use_cassette("parcels_request/without_updated_after_with_cursor") do
+            result = subject.execute
+
+            expect(result.length).to eq(23)
+          end
+        end
+      end
     end
 
     context "with updated_after" do
@@ -29,6 +42,19 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
           result = subject.execute
 
           expect(result.length).to eq(11)
+        end
+      end
+
+      context "when cursor is provided" do
+        let(:cursor) { "some_next_page_token" }
+        subject { described_class.new(updated_after: updated_after, cursor: cursor) }
+
+        it "includes cursor in the request URL" do
+          VCR.use_cassette("parcels_request/with_updated_after_with_cursor") do
+            result = subject.execute
+
+            expect(result.length).to eq(11)
+          end
         end
       end
     end
