@@ -1,0 +1,62 @@
+# frozen_string_literal: true
+
+require "spec_helper"
+
+RSpec.describe Sendcloud::Operations::ParcelsRequest do
+  let(:default_base_url) { "https://panel.sendcloud.sc/api/v2/" }
+
+  before { configure_client(base_url: default_base_url) }
+
+  describe "#execute" do
+    context "without updated_after" do
+      subject { described_class.new }
+
+      it "returns parcels" do
+        VCR.use_cassette("parcels_request/without_updated_after") do
+          result = subject.execute
+
+          expect(result.length).to eq(23)
+        end
+      end
+
+      context "when cursor is provided" do
+        let(:cursor) { "some_next_page_token" }
+        subject { described_class.new(cursor: cursor) }
+
+        it "includes cursor in the request URL" do
+          VCR.use_cassette("parcels_request/without_updated_after_with_cursor") do
+            result = subject.execute
+
+            expect(result.length).to eq(23)
+          end
+        end
+      end
+    end
+
+    context "with updated_after" do
+      let(:updated_after) { DateTime.parse("2021-09-10 00:00:00.000Z") }
+      subject { described_class.new(updated_after: updated_after) }
+
+      it "returns parcels after the specified date" do
+        VCR.use_cassette("parcels_request/with_updated_after") do
+          result = subject.execute
+
+          expect(result.length).to eq(11)
+        end
+      end
+
+      context "when cursor is provided" do
+        let(:cursor) { "some_next_page_token" }
+        subject { described_class.new(updated_after: updated_after, cursor: cursor) }
+
+        it "includes cursor in the request URL" do
+          VCR.use_cassette("parcels_request/with_updated_after_with_cursor") do
+            result = subject.execute
+
+            expect(result.length).to eq(11)
+          end
+        end
+      end
+    end
+  end
+end
