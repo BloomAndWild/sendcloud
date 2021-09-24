@@ -21,7 +21,8 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
     end
 
     context "with updated_after" do
-      subject { described_class.new(updated_after: "2021-09-10 00:00:00.000Z") }
+      let(:updated_after) { DateTime.parse("2021-09-10 00:00:00.000Z") }
+      subject { described_class.new(updated_after: updated_after) }
 
       it "returns parcels after the specified date" do
         VCR.use_cassette("parcels_request/with_updated_after") do

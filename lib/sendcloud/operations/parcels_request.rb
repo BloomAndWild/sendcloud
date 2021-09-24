@@ -10,8 +10,8 @@ module Sendcloud
       end
 
       def endpoint
-        params = if !!options[:updated_after]
-          "?updated_after=#{options[:updated_after]}"
+        params = if updated_after
+          "?updated_after=#{CGI.escape(updated_after)}"
         else
           ""
         end
@@ -21,6 +21,14 @@ module Sendcloud
 
       def http_method
         :get
+      end
+
+      def updated_after
+        @updated_after ||= begin
+          return unless !!options[:updated_after]
+
+          options[:updated_after].iso8601
+        end
       end
     end
   end

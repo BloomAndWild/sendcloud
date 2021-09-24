@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://panel.sendcloud.sc/api/v2/parcels?updated_after=2021-09-10%2000:00:00.000Z
+    uri: https://panel.sendcloud.sc/api/v2/parcels?updated_after=2021-09-10T00:00:00%2B00:00
     body:
       encoding: UTF-8
       string: 'null'
