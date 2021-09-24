@@ -28,7 +28,7 @@ module Sendcloud
           params = [
             [:updated_after, updated_after],
             [:cursor, cursor]
-          ].reject do |k,v|
+          ].reject do |_, v|
             v.nil?
           end
 
