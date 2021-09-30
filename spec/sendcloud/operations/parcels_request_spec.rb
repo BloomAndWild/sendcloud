@@ -8,14 +8,24 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
   before { configure_client(base_url: default_base_url) }
 
   describe "#execute" do
-    context "without updated_after" do
-      subject { described_class.new }
+    subject { described_class.new }
 
+    it "returns the full response body" do
+      VCR.use_cassette("parcels_request/without_updated_after") do
+        result = subject.execute
+
+        expect(result.has_key?(:parcels)).to be_truthy
+        expect(result.has_key?(:previous)).to be_truthy
+        expect(result.has_key?(:next)).to be_truthy
+      end
+    end
+
+    context "without updated_after" do
       it "returns parcels" do
         VCR.use_cassette("parcels_request/without_updated_after") do
           result = subject.execute
 
-          expect(result.length).to eq(23)
+          expect(result[:parcels].length).to eq(23)
         end
       end
 
@@ -27,7 +37,7 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
           VCR.use_cassette("parcels_request/without_updated_after_with_cursor") do
             result = subject.execute
 
-            expect(result.length).to eq(23)
+            expect(result[:parcels].length).to eq(23)
           end
         end
       end
@@ -41,7 +51,7 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
         VCR.use_cassette("parcels_request/with_updated_after") do
           result = subject.execute
 
-          expect(result.length).to eq(11)
+          expect(result[:parcels].length).to eq(11)
         end
       end
 
@@ -53,7 +63,7 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
           VCR.use_cassette("parcels_request/with_updated_after_with_cursor") do
             result = subject.execute
 
-            expect(result.length).to eq(11)
+            expect(result[:parcels].length).to eq(11)
           end
         end
       end
