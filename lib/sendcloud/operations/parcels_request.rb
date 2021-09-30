@@ -6,7 +6,7 @@ module Sendcloud
       private
 
       def handle_response_body(body)
-        body[:parcels]
+        body
       end
 
       def endpoint
