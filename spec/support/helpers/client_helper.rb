@@ -8,7 +8,7 @@ def configure_client(base_url: nil, public_key: nil, secret_key: nil)
     config.public_key = public_key || ENV.fetch("SENDCLOUD_PUBLIC_KEY", "")
     config.secret_key = secret_key || ENV.fetch("SENDCLOUD_SECRET_KEY", "")
 
-    config.logger = Logger.new(STDERR)
+    config.logger = Logger.new(File::NULL)
     config.logger.level = :debug
   end
 end

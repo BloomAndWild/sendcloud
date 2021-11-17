@@ -13,9 +13,6 @@ module Sendcloud
     end
 
     def execute
-      http_client = Faraday.new
-      http_client.basic_auth(public_key, secret_key)
-
       json_payload = JSON.generate(payload)
       @response = http_client.run_request(http_method, api_url, json_payload, headers)
       body = JSON.parse(response.body, symbolize_names: true)
@@ -25,6 +22,22 @@ module Sendcloud
     end
 
     protected
+
+    def http_client
+      @http_client ||= Faraday.new
+      @http_client.request(:basic_auth, public_key, secret_key)
+      @http_client.response(:logger, logger, logger_config)
+
+      @http_client
+    end
+
+    def logger_config
+      @logger_config ||= {
+        log_level: Logger::SEV_LABEL[logger.level].downcase.to_sym,
+        headers: false,
+        bodies: { request: false, response: true }
+      }
+    end
 
     def http_method
       raise NoMethodError, "subclass must implement #{__method__}"
@@ -66,6 +79,10 @@ module Sendcloud
 
     def base_url
       config.base_url
+    end
+
+    def logger
+      config.logger
     end
 
     def config

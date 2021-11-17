@@ -75,4 +75,23 @@ RSpec.describe Sendcloud::Operation do
       end
     end
   end
+
+  context "logging" do
+    before do
+      configure_client(base_url: default_base_url)
+    end
+
+    it "logs the request" do
+      VCR.use_cassette("operation/logging") do
+        operation = default_class.new
+        logger = Sendcloud::Client.config.logger
+        level = Logger::SEV_LABEL[logger.level].downcase.to_sym
+
+        expect(logger).to receive(level).at_least(:once)
+
+        operation.execute
+      end
+    end
+  end
+
 end
