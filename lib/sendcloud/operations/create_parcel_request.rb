@@ -14,7 +14,7 @@ module Sendcloud
       end
 
       def endpoint
-        "parcels"
+        "parcels?errors=verbose-carrier"
       end
 
       def http_method

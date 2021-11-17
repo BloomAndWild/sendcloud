@@ -68,7 +68,44 @@ RSpec.describe Sendcloud::Operations::CreateParcelRequest do
       it "raises an exception" do
         VCR.use_cassette("create_parcel_request/invalid_request") do
           aggregate_failures do
-            expect { subject.execute }.to raise_error(Sendcloud::Errors::ResponseError, '400 shipping_method: "This field is required."')
+            expect { subject.execute }.to raise_error(
+              Sendcloud::Errors::ResponseError,
+              'Sendcloud error: 400 - shipping_method: "This field is required."'
+            )
+            expect(subject.response.status).to eq(400)
+          end
+        end
+      end
+    end
+
+    context "invalid request with verbose carrier errors" do
+      let(:payload) do
+        {
+          name: "John Doe",
+          company_name: "Bloom&Wild",
+          address: "Insulindelaan",
+          house_number: "115",
+          city: "Eindhoven",
+          postal_code: "3316 EE", # Problematic postcode
+          telephone: "+31612345678",
+          email: "hello@bloomandwild.com",
+          data: [],
+          country: "NL",
+          order_number: "1234567890",
+          request_label: true,
+          shipment: {
+            id: 98 # shipping method ID is required when request_label=true
+          }
+        }
+      end
+
+      it "raises an exception" do
+        VCR.use_cassette("create_parcel_request/invalid_request_with_carrier_errors") do
+          aggregate_failures do
+            expect {
+              subject.execute
+            }.to raise_error(Sendcloud::Errors::ResponseError,
+              'Sendcloud error: 400 - non_field_errors: "PostNL service error: \'1225029\'"')
             expect(subject.response.status).to eq(400)
           end
         end
