@@ -94,7 +94,7 @@ RSpec.describe Sendcloud::Operations::CreateParcelRequest do
           order_number: "1234567890",
           request_label: true,
           shipment: {
-            id: 98 # shipping method ID is required when request_label=true
+            id: 98 # Problematic shipping method (PostNL Evening where a lot of postcodes aren't supported)
           }
         }
       end
