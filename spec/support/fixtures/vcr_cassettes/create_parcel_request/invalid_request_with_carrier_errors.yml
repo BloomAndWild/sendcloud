@@ -5,8 +5,8 @@ http_interactions:
     uri: https://panel.sendcloud.sc/api/v2/parcels?errors=verbose-carrier
     body:
       encoding: UTF-8
-      string: '{"parcel":{"name":"John Doe","company_name":"Bloom&Wild","address":"Insulindelaan","house_number":"115","city":"Eindhoven","postal_code":"5642CV","telephone":"+31612345678","email":"hello@bloomandwild.com","data":[],"country":"NL","order_number":"1234567890","shipping_method_checkout_name":"Unstamped
-        letter","request_label":true}}'
+      string: '{"parcel":{"name":"John Doe","company_name":"Bloom&Wild","address":"Insulindelaan","house_number":"115","city":"Eindhoven","postal_code":"3316
+        EE","telephone":"+31612345678","email":"hello@bloomandwild.com","data":[],"country":"NL","order_number":"1234567890","request_label":true,"shipment":{"id":98}}}'
     headers:
       User-Agent:
       - Faraday v1.8.0
@@ -24,11 +24,11 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Wed, 17 Nov 2021 11:03:47 GMT
+      - Wed, 17 Nov 2021 11:48:40 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '106'
+      - '115'
       Connection:
       - keep-alive
       Server:
@@ -53,7 +53,7 @@ http_interactions:
       - Origin, Cookie
     body:
       encoding: UTF-8
-      string: '{"error":{"code":400,"request":"api/v2/parcels","message":"shipping_method:
-        \"This field is required.\""}}'
-  recorded_at: Wed, 17 Nov 2021 11:03:47 GMT
+      string: '{"error":{"code":400,"request":"api/v2/parcels","message":"non_field_errors:
+        \"PostNL service error: ''1225029''\""}}'
+  recorded_at: Wed, 17 Nov 2021 11:48:40 GMT
 recorded_with: VCR 6.0.0

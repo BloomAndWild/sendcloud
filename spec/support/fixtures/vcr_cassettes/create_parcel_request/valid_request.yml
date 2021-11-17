@@ -1,64 +1,66 @@
 ---
 http_interactions:
-- request:
-    method: post
-    uri: https://panel.sendcloud.sc/api/v2/parcels
-    body:
-      encoding: UTF-8
-      string: '{"parcel":{"name":"John Doe","company_name":"Bloom&Wild","address":"Insulindelaan","house_number":"115","city":"Eindhoven","postal_code":"5642CV","telephone":"+31612345678","email":"hello@bloomandwild.com","data":[],"country":"NL","order_number":"1234567890","shipping_method_checkout_name":"Unstamped
-        letter","request_label":true,"shipment":{"id":8}}}'
-    headers:
-      User-Agent:
-      - Faraday v1.7.0
-      Authorization:
-      - Basic <BASIC_AUTH_CREDENTIALS>
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Thu, 19 Aug 2021 12:57:27 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Server:
-      - nginx
-      Vary:
-      - Accept-Encoding
-      - Origin, Cookie
-      Allow:
-      - GET, POST, PUT, HEAD, OPTIONS
-      X-Sendcloud-Client-Latest-Version-Windows:
-      - 1.0.4
-      X-Sendcloud-Client-Latest-Version-Macos:
-      - 1.0.5
-      X-Sendcloud-Client-Latest-Version-Linux:
-      - 1.0.2
-      Strict-Transport-Security:
-      - max-age=15552000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - DENY
-    body:
-      encoding: ASCII-8BIT
-      string: '{"parcel":{"id":124292020,"address":"Insulindelaan 115","address_2":"","address_divided":{"street":"Insulindelaan","house_number":"115"},"city":"Eindhoven","company_name":"Bloom&Wild","country":{"iso_2":"NL","iso_3":"NLD","name":"Netherlands"},"data":{},"date_created":"19-08-2021
-        12:57:27","date_announced":"19-08-2021 12:57:27","date_updated":"19-08-2021
-        12:57:27","email":"hello@bloomandwild.com","name":"John Doe","postal_code":"5642
-        CV","reference":"0","shipment":{"id":8,"name":"Unstamped letter"},"status":{"id":1000,"message":"Ready
-        to send"},"to_service_point":null,"telephone":"+31612345678","tracking_number":"SCCWF28M9WHT","weight":"1.000","label":{"normal_printer":["https://panel.sendcloud.sc/api/v2/labels/normal_printer/124292020?start_from=0","https://panel.sendcloud.sc/api/v2/labels/normal_printer/124292020?start_from=1","https://panel.sendcloud.sc/api/v2/labels/normal_printer/124292020?start_from=2","https://panel.sendcloud.sc/api/v2/labels/normal_printer/124292020?start_from=3"],"label_printer":"https://panel.sendcloud.sc/api/v2/labels/label_printer/124292020"},"customs_declaration":{},"order_number":"1234567890","insured_value":0,"total_insured_value":0,"to_state":null,"customs_invoice_nr":"","customs_shipment_type":null,"parcel_items":[],"documents":[{"type":"label","size":"a6","link":"https://panel.sendcloud.sc/api/v2/parcels/124292020/documents/label"}],"type":"letter","shipment_uuid":null,"shipping_method":8,"external_order_id":"124292020","external_shipment_id":"","external_reference":null,"is_return":false,"note":"","to_post_number":"","total_order_value":null,"total_order_value_currency":null,"colli_tracking_number":"","colli_uuid":"3a241a8d-a246-485f-a4de-1ffe638ae5b9","collo_nr":0,"collo_count":1,"awb_tracking_number":null,"box_number":null,"length":null,"width":null,"height":null,"shipping_method_checkout_name":"Unstamped
-        letter","carrier":{"code":"sendcloud"},"tracking_url":"https://tracking.sendcloud.sc/forward?carrier=sendcloud&code=SCCWF28M9WHT&destination=NL&lang=en-gb&source=NL&type=letter&verification=5642+CV&created_at=2021-08-19"}}'
-  recorded_at: Thu, 19 Aug 2021 12:57:27 GMT
+  - request:
+      method: post
+      uri: https://panel.sendcloud.sc/api/v2/parcels?errors=verbose-carrier
+      body:
+        encoding: UTF-8
+        string:
+          '{"parcel":{"name":"John Doe","company_name":"Bloom&Wild","address":"Insulindelaan","house_number":"115","city":"Eindhoven","postal_code":"5642CV","telephone":"+31612345678","email":"hello@bloomandwild.com","data":[],"country":"NL","order_number":"1234567890","shipping_method_checkout_name":"Unstamped
+          letter","request_label":true,"shipment":{"id":8}}}'
+      headers:
+        User-Agent:
+          - Faraday v1.8.0
+        Authorization:
+          - Basic <BASIC_AUTH_CREDENTIALS>
+        Content-Type:
+          - application/json
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Date:
+          - Wed, 17 Nov 2021 12:46:03 GMT
+        Content-Type:
+          - application/json
+        Transfer-Encoding:
+          - chunked
+        Connection:
+          - keep-alive
+        Server:
+          - nginx
+        Vary:
+          - Accept-Encoding
+          - Origin, Cookie
+        Allow:
+          - GET, POST, PUT, HEAD, OPTIONS
+        X-Sendcloud-Client-Latest-Version-Windows:
+          - 1.0.4
+        X-Sendcloud-Client-Latest-Version-Macos:
+          - 1.0.5
+        X-Sendcloud-Client-Latest-Version-Linux:
+          - 1.0.2
+        Strict-Transport-Security:
+          - max-age=15552000; includeSubDomains; preload
+        X-Content-Type-Options:
+          - nosniff
+        X-Xss-Protection:
+          - 1; mode=block
+        X-Frame-Options:
+          - DENY
+      body:
+        encoding: ASCII-8BIT
+        string:
+          '{"parcel":{"id":124292020,"address":"Insulindelaan 115","address_2":"","address_divided":{"street":"Insulindelaan","house_number":"115"},"city":"Eindhoven","company_name":"Bloom&Wild","country":{"iso_2":"NL","iso_3":"NLD","name":"Netherlands"},"data":{},"date_created":"17-11-2021
+          12:46:02","date_announced":"17-11-2021 12:46:02","date_updated":"17-11-2021
+          12:46:02","email":"hello@bloomandwild.com","name":"John Doe","postal_code":"5642
+          CV","reference":"0","shipment":{"id":8,"name":"Unstamped letter"},"status":{"id":1000,"message":"Ready
+          to send"},"to_service_point":null,"telephone":"+31612345678","tracking_number":"SCCWF29CH34D","weight":"1.000","label":{"normal_printer":["https://panel.sendcloud.sc/api/v2/labels/normal_printer/140771990?start_from=0","https://panel.sendcloud.sc/api/v2/labels/normal_printer/140771990?start_from=1","https://panel.sendcloud.sc/api/v2/labels/normal_printer/140771990?start_from=2","https://panel.sendcloud.sc/api/v2/labels/normal_printer/140771990?start_from=3"],"label_printer":"https://panel.sendcloud.sc/api/v2/labels/label_printer/140771990"},"customs_declaration":{},"order_number":"1234567890","insured_value":0,"total_insured_value":0,"to_state":null,"customs_invoice_nr":"","customs_shipment_type":null,"parcel_items":[],"documents":[{"type":"label","size":"a6","link":"https://panel.sendcloud.sc/api/v2/parcels/140771990/documents/label"}],"type":"letter","shipment_uuid":null,"shipping_method":8,"external_order_id":"140771990","external_shipment_id":"","external_reference":null,"is_return":false,"note":"","to_post_number":"","total_order_value":null,"total_order_value_currency":null,"colli_tracking_number":"","colli_uuid":"736ce401-dee9-4c81-8b53-206903577fe3","collo_nr":0,"collo_count":1,"awb_tracking_number":null,"box_number":null,"length":null,"width":null,"height":null,"shipping_method_checkout_name":"Unstamped
+          letter","carrier":{"code":"sendcloud"},"tracking_url":"https://tracking.sendcloud.sc/forward?carrier=sendcloud&code=SCCWF29CH34D&destination=NL&lang=en-us&source=NL&type=letter&verification=5642+CV&servicepoint_verification=&created_at=2021-11-17"}}'
+    recorded_at: Wed, 17 Nov 2021 12:46:00 GMT
 recorded_with: VCR 6.0.0

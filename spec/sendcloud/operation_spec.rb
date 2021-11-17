@@ -46,7 +46,7 @@ RSpec.describe Sendcloud::Operation do
             expect {
               operation.execute
             }.to raise_error(
-              Sendcloud::Errors::ResponseError, "401 Invalid username/password."
+              Sendcloud::Errors::ResponseError, "Sendcloud error: 401 - Invalid username/password."
             )
             expect(operation.response.status).to eq(401)
           end
