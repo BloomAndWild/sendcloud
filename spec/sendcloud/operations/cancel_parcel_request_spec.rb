@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe Sendcloud::Operations::CancelParcelRequest do
@@ -6,7 +7,7 @@ RSpec.describe Sendcloud::Operations::CancelParcelRequest do
 
   before { configure_client(base_url: default_base_url) }
 
-  describe '#execute' do
+  describe "#execute" do
     subject { described_class.new(parcel_id: parcel_id) }
 
     context "with invalid parcel id" do
@@ -18,7 +19,7 @@ RSpec.describe Sendcloud::Operations::CancelParcelRequest do
             expect {
               subject.execute
             }.to raise_error(
-              Sendcloud::Errors::ResponseError, "404 No Parcel matches the given query."
+              Sendcloud::Errors::ResponseError, "Sendcloud error: 404 - No Parcel matches the given query."
             )
             expect(subject.response.status).to eq(404)
           end

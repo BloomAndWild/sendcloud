@@ -14,7 +14,7 @@ module Sendcloud
       private
 
       def build_message
-        "#{status} #{body[:error][:message]}"
+        "Sendcloud error: #{status} - #{body[:error][:message]}"
       end
     end
   end

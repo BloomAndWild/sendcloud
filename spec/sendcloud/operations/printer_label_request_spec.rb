@@ -22,7 +22,7 @@ RSpec.describe Sendcloud::Operations::PrinterLabelRequest do
 
           aggregate_failures do
             expect(subject.response.status).to eq(200)
-            expect(Base64::strict_decode64(result)).to match("%PDF") # checking for PDF header
+            expect(Base64.strict_decode64(result)).to match("%PDF") # checking for PDF header
           end
         end
       end
@@ -34,7 +34,10 @@ RSpec.describe Sendcloud::Operations::PrinterLabelRequest do
       it "raises an exception" do
         VCR.use_cassette("printer_label_request/invalid_request") do
           aggregate_failures do
-            expect { subject.execute }.to raise_error(Sendcloud::Errors::ResponseError, "404 No Parcel matches the given query.")
+            expect {
+              subject.execute
+            }.to raise_error(Sendcloud::Errors::ResponseError,
+              "Sendcloud error: 404 - No Parcel matches the given query.")
             expect(subject.response.status).to eq(404)
           end
         end
