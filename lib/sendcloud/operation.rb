@@ -24,15 +24,15 @@ module Sendcloud
     protected
 
     def http_client
-      @http_client ||= Faraday.new
-      @http_client.request(:basic_auth, public_key, secret_key)
-      @http_client.response(:logger, logger, logger_config)
+      http_client = Faraday.new
+      http_client.basic_auth(public_key, secret_key)
+      http_client.response(:logger, logger, logger_config)
 
-      @http_client
+      http_client
     end
 
     def logger_config
-      @logger_config ||= {
+      {
         formatter: Sendcloud::LogFormatter,
         log_level: Logger::SEV_LABEL[logger.level].downcase.to_sym,
         headers: false,

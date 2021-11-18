@@ -2,7 +2,7 @@
 
 require "json"
 require "faraday"
-require "faraday/logging/formatter"
+require "forwardable"
 
 require "sendcloud/client"
 require "sendcloud/config"
