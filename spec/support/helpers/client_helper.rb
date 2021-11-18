@@ -10,5 +10,6 @@ def configure_client(base_url: nil, public_key: nil, secret_key: nil)
 
     config.logger = Logger.new(File::NULL)
     config.logger.level = :debug
+    config.log_responses = :all
   end
 end

@@ -2,6 +2,7 @@
 
 require "json"
 require "faraday"
+require "faraday/logging/formatter"
 
 require "sendcloud/client"
 require "sendcloud/config"
@@ -11,6 +12,8 @@ require "sendcloud/errors/client_error"
 require "sendcloud/errors/response_error"
 require "sendcloud/errors/bad_request_error"
 require "sendcloud/errors/deleted_error"
+
+require "sendcloud/log_formatter"
 
 require "sendcloud/operation"
 require "sendcloud/operations/cancel_parcel_request"

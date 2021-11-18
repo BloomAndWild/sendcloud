@@ -33,9 +33,11 @@ module Sendcloud
 
     def logger_config
       @logger_config ||= {
+        formatter: Sendcloud::LogFormatter,
         log_level: Logger::SEV_LABEL[logger.level].downcase.to_sym,
         headers: false,
-        bodies: { request: false, response: true }
+        bodies: { request: false, response: true },
+        log_responses: log_responses
       }
     end
 
@@ -83,6 +85,10 @@ module Sendcloud
 
     def logger
       config.logger
+    end
+
+    def log_responses
+      config.log_responses
     end
 
     def config

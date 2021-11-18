@@ -21,6 +21,19 @@ Or install it yourself as:
 
     $ gem install sendcloud
 
+## Configuration
+
+```ruby
+  Sendcloud::Client.configure do |config|
+    config.base_url = ENV.fetch("SENDCLOUD_BASE_URL", "")
+    config.public_key = ENV.fetch("SENDCLOUD_PUBLIC_KEY", "")
+    config.secret_key = ENV.fetch("SENDCLOUD_SECRET_KEY", "")
+
+    config.logger = Logger.new($sdtout) # use the logger of your choice here. The format is set by LogFormatter
+    config.logger.level = :debug
+    config.log_responses = :all # :all, :none or :failed. Defaults to :all
+  end
+```
 
 ## Running specs
 
