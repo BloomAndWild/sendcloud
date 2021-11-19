@@ -37,7 +37,10 @@ module Sendcloud
     private
 
     def handle_error(body)
-      raise ResponseError.new(payload: payload, body: body, status: response.status)
+      raise ResponseError.new(payload: payload,
+        body: body,
+        status: response.status,
+        response: @response)
     end
 
     def handle_response_body(body)
