@@ -1,1 +1,12 @@
 inherit_from: .ruby-style.yml
+
+Style/HashSyntax:
+  Description: 'Prefer Ruby 1.9 hash syntax { a: 1, b: 2 } over 1.8 syntax { :a =>
+    1, :b => 2 }.'
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#hash-literals
+  Enabled: true
+  EnforcedStyle: ruby19
+  EnforcedShorthandSyntax: either
+  SupportedStyles:
+  - ruby19
+  - hash_rockets

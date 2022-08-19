@@ -6,8 +6,9 @@ module Sendcloud
   module Operations
     class PrinterLabelRequest < Operation
       def execute
-        http_client = Faraday.new
-        http_client.basic_auth(public_key, secret_key)
+        http_client = Faraday.new do |conn|
+          conn.request(:authorization, :basic, public_key, secret_key)
+        end
 
         @response = http_client.run_request(http_method, api_url, payload, headers)
 

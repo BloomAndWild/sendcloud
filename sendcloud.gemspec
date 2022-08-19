@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/BloomAndWild/sendcloud"
   spec.license       = "Proprietary"
 
-  spec.required_ruby_version = "~> 2.7.1"
+  spec.required_ruby_version = Gem::Requirement.new(">= 3.1.2")
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
