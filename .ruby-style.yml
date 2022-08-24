@@ -35,7 +35,6 @@ AllCops:
     - public/**/*
   DisplayCopNames: false
   StyleGuideCopsOnly: false
-  TargetRubyVersion: 3.0
 
 Rails:
   Enabled: true
