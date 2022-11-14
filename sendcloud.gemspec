@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/BloomAndWild/sendcloud"
   spec.license       = "Proprietary"
 
-  spec.required_ruby_version = "~> 3.0.3"
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.6")
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
 
-  spec.add_dependency "faraday", "~> 1.8"
+  spec.add_dependency "faraday", "> 1.0", "< 2.0"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "dotenv"
