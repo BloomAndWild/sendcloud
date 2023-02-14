@@ -18,6 +18,7 @@ require "sendcloud/operations/create_parcel_request"
 require "sendcloud/operations/create_shipment_request"
 require "sendcloud/operations/parcels_request"
 require "sendcloud/operations/printer_label_request"
+require "sendcloud/operations/sender_addresses_request"
 require "sendcloud/operations/shipping_methods_request"
 require "sendcloud/operations/tracking_request"
 
