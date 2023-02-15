@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://panel.sendcloud.sc/api/v2/user/addresses/sender
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - Basic <BASIC_AUTH_CREDENTIALS>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - envoy
+      Date:
+      - Tue, 14 Feb 2023 11:02:11 GMT
+      Content-Type:
+      - application/json
+      Allow:
+      - GET, HEAD, OPTIONS
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Frame-Options:
+      - DENY
+      Vary:
+      - Origin, Cookie
+      Content-Length:
+      - '1651'
+      X-Envoy-Upstream-Service-Time:
+      - '80'
+    body:
+      encoding: UTF-8
+      string: '{"sender_addresses":[{"id":129444,"company_name":"Bloomon UK","contact_name":"Lars
+        Ackerman","email":"lars.ackerman@bloomon.nl","telephone":"+31625012179","street":"Hotton
+        Garden","house_number":"34-35","postal_box":"","postal_code":"EC1N 8DX","city":"London","country":"GB","country_state":null,"vat_number":null,"eori_number":"GBASDFSADF","label":"","brand_id":82742,"signature_full_name":"","signature_initials":""},{"id":96644,"company_name":"Bloomon
+        test DE","contact_name":"Lars Ackerman","email":"max.shytikov+test@bloomon.com","telephone":"+31625012179","street":"Debyestrasse","house_number":"555","postal_box":"","postal_code":"52078","city":"Aachen","country":"DE","country_state":null,"vat_number":null,"eori_number":null,"label":"","brand_id":82742,"signature_full_name":"","signature_initials":""},{"id":93780,"company_name":"Bloomon
+        Test NL","contact_name":"Bloomon","email":"patrick.hurenkamp+test@bloomon.com","telephone":"+31646447049","street":"Legmeerdijk","house_number":"313","postal_box":"B.006-54","postal_code":"1431
+        GB","city":"Aalsmeer","country":"NL","country_state":null,"vat_number":null,"eori_number":null,"label":"","brand_id":82742,"signature_full_name":"","signature_initials":""},{"id":393806,"company_name":"Bloom
+        & Wild Ltd","contact_name":".","email":"lars.ackerman@bloomon.nl","telephone":"+31858884404","street":"Bermuda
+        Industrial Estate","house_number":"2","postal_box":"Gresham Road, St Georges
+        Way","postal_code":"CV10 7QR","city":"Nuneaton","country":"GB","country_state":null,"vat_number":"","eori_number":"","label":"Innovation
+        Centre","brand_id":82742,"signature_full_name":"","signature_initials":""}]}'
+  recorded_at: Tue, 14 Feb 2023 11:02:09 GMT
+recorded_with: VCR 6.1.0
