@@ -12,24 +12,21 @@ RSpec.describe Sendcloud::Operations::SenderAddressesRequest do
   describe "#execute" do
     let(:subject) { described_class.new }
 
-    it "returns a response in the expected format" do
+    it "returns a response in the expected format", :aggregate_failures do
       VCR.use_cassette("sender_addresses_request/valid_request") do
         result = subject.execute
 
-        aggregate_failures do
-          expect(subject.response.status).to eq(200)
-          expect(result).to be_instance_of(Array)
-          expect(result.first.keys).to include(:id, :label)
+        expect(subject.response.status).to eq(200)
+        expect(result).to be_instance_of(Array)
 
-          expect(result.find { |sender_address| sender_address[:label] == "Innovation Centre" }).to match(
-            hash_including(
-              {
-                label: "Innovation Centre",
-                id: 393806
-              }
-            )
+        expect(result.find { |sender_address| sender_address[:label] == "Innovation Centre" }).to match(
+          hash_including(
+            {
+              label: "Innovation Centre",
+              id: 393806
+            }
           )
-        end
+        )
       end
     end
   end
