@@ -16,7 +16,7 @@ module Sendcloud
       http_client = Faraday.new
       http_client.basic_auth(public_key, secret_key)
 
-      json_payload = JSON.generate(payload)
+      json_payload = !payload.nil? ? JSON.generate(payload) : nil
       @response = http_client.run_request(http_method, api_url, json_payload, headers)
       body = JSON.parse(response.body, symbolize_names: true)
       return handle_response_body(body) if response.success?
