@@ -83,21 +83,23 @@ RSpec.describe Sendcloud::Operation do
     end
 
     it "sends a request with empty body" do
-      operation = default_class.new(
-        public_key: ENV.fetch("SENDCLOUD_PUBLIC_KEY", ""),
-        secret_key: ENV.fetch("SENDCLOUD_SECRET_KEY", "")
-      )
-      expect_any_instance_of(Faraday)
-        .to receive(:run_request)
-        .with(
-          :get,
-          "https://panel.sendcloud.sc/api/v2/parcels/statuses",
-          "null",
-          {content_type: "application/json"},
+      VCR.use_cassette("operation/request_body") do
+        operation = default_class.new(
+          public_key: ENV.fetch("SENDCLOUD_PUBLIC_KEY", ""),
+          secret_key: ENV.fetch("SENDCLOUD_SECRET_KEY", "")
         )
-        .and_return("{}")
+        expect(operation.http_client)
+          .to receive(:run_request)
+          .with(
+            :get,
+            "https://panel.sendcloud.sc/api/v2/parcels/statuses",
+            nil,
+            {content_type: "application/json"},
+          )
+          .and_call_original
 
-      operation.execute
+        operation.execute
+      end
     end
   end
 end
