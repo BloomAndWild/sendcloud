@@ -75,4 +75,29 @@ RSpec.describe Sendcloud::Operation do
       end
     end
   end
+
+  context "with payload" do
+    before do
+      # public_key and secret_key passed as arguments take precedence over the global config
+      configure_client(base_url: default_base_url, public_key: "broken", secret_key: "wrong")
+    end
+
+    it "sends a request with empty body" do
+      operation = default_class.new(
+        public_key: ENV.fetch("SENDCLOUD_PUBLIC_KEY", ""),
+        secret_key: ENV.fetch("SENDCLOUD_SECRET_KEY", "")
+      )
+      expect_any_instance_of(Faraday)
+        .to receive(:run_request)
+        .with(
+          :get,
+          "https://panel.sendcloud.sc/api/v2/parcels/statuses",
+          "null",
+          {content_type: "application/json"},
+        )
+        .and_return("{}")
+
+      operation.execute
+    end
+  end
 end
