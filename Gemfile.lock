@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sendcloud (0.5.0)
+    sendcloud (0.6.0)
       faraday (> 1.0, < 2.0)
 
 GEM
