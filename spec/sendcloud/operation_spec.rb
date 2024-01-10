@@ -76,18 +76,20 @@ RSpec.describe Sendcloud::Operation do
     end
   end
 
-  context "with payload" do
+  context "without payload" do
     before do
       # public_key and secret_key passed as arguments take precedence over the global config
       configure_client(base_url: default_base_url, public_key: "broken", secret_key: "wrong")
     end
 
-    it "sends a request with empty body" do
+    it "sends a request with an empty body" do
       VCR.use_cassette("operation/request_body") do
         operation = default_class.new(
           public_key: ENV.fetch("SENDCLOUD_PUBLIC_KEY", ""),
           secret_key: ENV.fetch("SENDCLOUD_SECRET_KEY", "")
         )
+
+        # NOTE: The main expectation is on the request's body
         expect(operation.http_client)
           .to receive(:run_request)
           .with(
