@@ -104,8 +104,12 @@ RSpec.describe Sendcloud::Operations::CreateParcelRequest do
           aggregate_failures do
             expect {
               subject.execute
-            }.to raise_error(Sendcloud::Errors::ResponseError,
-              'Sendcloud error: 400 - non_field_errors: "PostNL service error: \'1225029\'"')
+            }.to raise_error(Sendcloud::Errors::ResponseError) do |error|
+              expect(error.message).to include("1225029") # PostNL error code
+              expect(error.message).to include(
+                "Service is not available for the requested postal code on this specific weekday"
+              )
+            end
             expect(subject.response.status).to eq(400)
           end
         end

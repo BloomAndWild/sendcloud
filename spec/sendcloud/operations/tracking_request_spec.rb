@@ -28,7 +28,7 @@ RSpec.describe Sendcloud::Operations::TrackingRequest do
     end
 
     context "with a valid parcel ID" do
-      let(:parcel_id) { "124320972" }
+      let(:parcel_id) { "343492699" }
 
       it "retrieves the tracking information for the parcel" do
         VCR.use_cassette("tracking_request/valid_parcel_id") do
@@ -40,16 +40,16 @@ RSpec.describe Sendcloud::Operations::TrackingRequest do
             expect(result).to be_instance_of(Hash)
             expect(result).to eq(
               {
-                tracking_number: "3SYZXG193621471",
-                tracking_url: "https://tracking.sendcloud.sc/forward?carrier=postnl&code=3SYZXG193621471&destination=NL&lang=en-gb&source=NL&type=parcel&verification=5642+CV&created_at=2021-08-19",
+                tracking_number: "SCCWF3HMRH7Y",
+                tracking_url: "https://tracking.eu-central-1-0.sendcloud.sc/forward?carrier=sendcloud&code=SCCWF3HMRH7Y&destination=NL&lang=en-us&source=NL&type=letter&verification=5642+CV&servicepoint_verification=&created_at=2024-01-23",
                 carrier: {
-                  code: "postnl"
+                  code: "sendcloud",
                 },
                 status: {
-                  id: 2000,
-                  message: "Cancelled"
+                  id: 1000,
+                  message: "Ready to send",
                 },
-                date_updated: "20-08-2021 03:20:35"
+                date_updated: "23-01-2024 09:49:04",
               }
             )
           end

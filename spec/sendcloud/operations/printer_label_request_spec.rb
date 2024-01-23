@@ -14,7 +14,7 @@ RSpec.describe Sendcloud::Operations::PrinterLabelRequest do
 
     context "valid request" do
       # taken from create_parcel_request/valid_request
-      let(:parcel_id) { "124292020" }
+      let(:parcel_id) { "343492699" }
 
       it "returns a response in the expected format" do
         VCR.use_cassette("printer_label_request/valid_request") do

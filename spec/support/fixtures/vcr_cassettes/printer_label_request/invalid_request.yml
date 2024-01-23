@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Faraday v1.7.0
+      - Faraday v1.10.2
       Authorization:
       - Basic <BASIC_AUTH_CREDENTIALS>
       Content-Type:
@@ -22,37 +22,34 @@ http_interactions:
       code: 404
       message: Not Found
     headers:
-      Date:
-      - Thu, 19 Aug 2021 15:07:38 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '111'
-      Connection:
-      - keep-alive
       Server:
-      - nginx
+      - envoy
+      Date:
+      - Tue, 23 Jan 2024 10:28:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
       Vary:
       - Accept, Origin, Cookie
       Allow:
       - GET, HEAD, OPTIONS
-      X-Sendcloud-Client-Latest-Version-Windows:
-      - 1.0.4
-      X-Sendcloud-Client-Latest-Version-Macos:
-      - 1.0.5
-      X-Sendcloud-Client-Latest-Version-Linux:
-      - 1.0.2
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
+      - max-age=31536000
       X-Content-Type-Options:
       - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
       X-Frame-Options:
       - DENY
+      Content-Length:
+      - '111'
+      X-Envoy-Upstream-Service-Time:
+      - '42'
     body:
       encoding: UTF-8
       string: '{"error":{"code":404,"request":"api/v2/labels/label_printer/1","message":"No
         Parcel matches the given query."}}'
-  recorded_at: Thu, 19 Aug 2021 15:07:38 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Tue, 23 Jan 2024 10:28:00 GMT
+recorded_with: VCR 6.1.0
