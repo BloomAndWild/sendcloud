@@ -28,6 +28,14 @@ RSpec.describe Sendcloud::Operations::CancelParcelRequest do
     end
 
     context "when parcel is valid" do
+      # TODO: Create a valid parcel as part of setup using
+      #       e.g. CreateParcelRequest
+      #
+      # Q: What does valid mean in this context?
+      # A: Since the /cancel endpoint can cancel OR delete a parcel
+      #    depending on its state, we want a parcel in a state such
+      #    that it will be cancelled instead of deleted.
+      #    See: https://api.sendcloud.dev/docs/sendcloud-public-api/parcels%2Foperations%2Fcreate-a-parcel-cancel
       let(:parcel_id) { "255387317" }
 
       it "cancels the parcel" do
@@ -50,6 +58,8 @@ RSpec.describe Sendcloud::Operations::CancelParcelRequest do
     end
 
     context "when parcel is deleted" do
+      # TODO: Create a deleted parcel as part of setup using
+      #       e.g. CreateParcelRequest then CancelParcelRequest
       let(:parcel_id) { "343619161" }
 
       it "raise deleted error" do
@@ -67,6 +77,8 @@ RSpec.describe Sendcloud::Operations::CancelParcelRequest do
     end
 
     context "when parcel is already cancelled" do
+      # TODO: Create a cancelled parcel as part of setup using
+      #       e.g. CreateParcelRequest then CancelParcelRequest
       let(:parcel_id) { "341371285" }
 
       it "raises a bad request exception" do

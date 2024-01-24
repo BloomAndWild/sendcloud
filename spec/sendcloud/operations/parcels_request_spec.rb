@@ -30,6 +30,7 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
       end
 
       context "when cursor is provided" do
+        # TODO: Extract the cursor from the first page
         let(:cursor) { "cD0zMDI2NjcxNjI=" }
         subject { described_class.new(cursor: cursor) }
 
@@ -37,6 +38,7 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
           VCR.use_cassette("parcels_request/without_updated_after_with_cursor") do
             result = subject.execute
 
+            # TODO: Assert these are actually different to the first page
             expect(result[:parcels].length).to eq(100)
           end
         end
@@ -56,6 +58,7 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
       end
 
       context "when cursor is provided" do
+        # TODO: Extract the cursor from the first page
         let(:cursor) { "cD0zMDI2NjcxNjI=" }
         subject { described_class.new(updated_after: updated_after, cursor: cursor) }
 
@@ -63,6 +66,7 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
           VCR.use_cassette("parcels_request/with_updated_after_with_cursor") do
             result = subject.execute
 
+            # TODO: Assert these are actually different to the first page
             expect(result[:parcels].length).to eq(100)
           end
         end

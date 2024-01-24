@@ -28,6 +28,8 @@ RSpec.describe Sendcloud::Operations::TrackingRequest do
     end
 
     context "with a valid parcel ID" do
+      # TODO: Create a valid parcel as part of setup using
+      #       e.g. CreateParcelRequest
       let(:parcel_id) { "343492699" }
 
       it "retrieves the tracking information for the parcel" do

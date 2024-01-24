@@ -13,6 +13,9 @@ RSpec.describe Sendcloud::Operations::PrinterLabelRequest do
     let(:subject) { described_class.new(parcel_id: parcel_id) }
 
     context "valid request" do
+      # TODO: Create a valid parcel as part of setup using
+      #       e.g. CreateParcelRequest
+      #
       # taken from create_parcel_request/valid_request
       let(:parcel_id) { "343492699" }
 
