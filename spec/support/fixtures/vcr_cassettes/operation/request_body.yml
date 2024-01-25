@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - envoy
       Date:
-      - Tue, 09 Jan 2024 17:38:12 GMT
+      - Tue, 23 Jan 2024 09:49:03 GMT
       Content-Type:
       - application/json; charset=utf-8
       Allow:
@@ -46,7 +46,7 @@ http_interactions:
       Content-Length:
       - '1509'
       X-Envoy-Upstream-Service-Time:
-      - '81'
+      - '59'
     body:
       encoding: UTF-8
       string: '[{"id":6,"message":"Not sorted"},{"id":15,"message":"Error collecting"},{"id":94,"message":"Parcel
@@ -66,5 +66,5 @@ http_interactions:
         status - check carrier track & trace page for more insights"},{"id":999,"message":"No
         label"},{"id":1001,"message":"Being announced"},{"id":2000,"message":"Cancelled"},{"id":1000,"message":"Ready
         to send"}]'
-  recorded_at: Tue, 09 Jan 2024 17:38:12 GMT
+  recorded_at: Tue, 23 Jan 2024 09:49:03 GMT
 recorded_with: VCR 6.1.0

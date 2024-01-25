@@ -25,19 +25,21 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
         VCR.use_cassette("parcels_request/without_updated_after") do
           result = subject.execute
 
-          expect(result[:parcels].length).to eq(23)
+          expect(result[:parcels].length).to eq(100)
         end
       end
 
       context "when cursor is provided" do
-        let(:cursor) { "some_next_page_token" }
+        # TODO: Extract the cursor from the first page
+        let(:cursor) { "cD0zMDI2NjcxNjI=" }
         subject { described_class.new(cursor: cursor) }
 
         it "includes cursor in the request URL" do
           VCR.use_cassette("parcels_request/without_updated_after_with_cursor") do
             result = subject.execute
 
-            expect(result[:parcels].length).to eq(23)
+            # TODO: Assert these are actually different to the first page
+            expect(result[:parcels].length).to eq(100)
           end
         end
       end
@@ -51,19 +53,21 @@ RSpec.describe Sendcloud::Operations::ParcelsRequest do
         VCR.use_cassette("parcels_request/with_updated_after") do
           result = subject.execute
 
-          expect(result[:parcels].length).to eq(11)
+          expect(result[:parcels].length).to eq(100)
         end
       end
 
       context "when cursor is provided" do
-        let(:cursor) { "some_next_page_token" }
+        # TODO: Extract the cursor from the first page
+        let(:cursor) { "cD0zMDI2NjcxNjI=" }
         subject { described_class.new(updated_after: updated_after, cursor: cursor) }
 
         it "includes cursor in the request URL" do
           VCR.use_cassette("parcels_request/with_updated_after_with_cursor") do
             result = subject.execute
 
-            expect(result[:parcels].length).to eq(11)
+            # TODO: Assert these are actually different to the first page
+            expect(result[:parcels].length).to eq(100)
           end
         end
       end

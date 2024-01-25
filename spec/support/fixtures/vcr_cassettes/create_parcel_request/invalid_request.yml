@@ -9,7 +9,7 @@ http_interactions:
         letter","request_label":true}}'
     headers:
       User-Agent:
-      - Faraday v1.8.0
+      - Faraday v1.10.2
       Authorization:
       - Basic <BASIC_AUTH_CREDENTIALS>
       Content-Type:
@@ -23,37 +23,34 @@ http_interactions:
       code: 400
       message: Bad Request
     headers:
-      Date:
-      - Wed, 17 Nov 2021 11:03:47 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '106'
-      Connection:
-      - keep-alive
       Server:
-      - nginx
+      - envoy
+      Date:
+      - Tue, 23 Jan 2024 09:49:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
       Allow:
       - GET, POST, PUT, HEAD, OPTIONS
-      X-Sendcloud-Client-Latest-Version-Windows:
-      - 1.0.4
-      X-Sendcloud-Client-Latest-Version-Macos:
-      - 1.0.5
-      X-Sendcloud-Client-Latest-Version-Linux:
-      - 1.0.2
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
+      - max-age=31536000
       X-Content-Type-Options:
       - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
       X-Frame-Options:
       - DENY
       Vary:
       - Origin, Cookie
+      Content-Length:
+      - '106'
+      X-Envoy-Upstream-Service-Time:
+      - '51'
     body:
       encoding: UTF-8
       string: '{"error":{"code":400,"request":"api/v2/parcels","message":"shipping_method:
         \"This field is required.\""}}'
-  recorded_at: Wed, 17 Nov 2021 11:03:47 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Tue, 23 Jan 2024 09:49:05 GMT
+recorded_with: VCR 6.1.0

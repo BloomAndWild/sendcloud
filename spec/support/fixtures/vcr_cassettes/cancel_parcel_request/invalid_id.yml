@@ -5,14 +5,16 @@ http_interactions:
     uri: https://panel.sendcloud.sc/api/v2/parcels/0/cancel
     body:
       encoding: UTF-8
-      string: 'null'
+      string: ''
     headers:
       User-Agent:
-      - Faraday v1.7.0
+      - Faraday v1.10.2
       Authorization:
       - Basic <BASIC_AUTH_CREDENTIALS>
       Content-Type:
       - application/json
+      Content-Length:
+      - '0'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -22,37 +24,34 @@ http_interactions:
       code: 404
       message: Not Found
     headers:
-      Date:
-      - Thu, 19 Aug 2021 13:17:16 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '105'
-      Connection:
-      - keep-alive
       Server:
-      - nginx
+      - envoy
+      Date:
+      - Tue, 23 Jan 2024 12:08:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
       Allow:
       - POST, OPTIONS
-      X-Sendcloud-Client-Latest-Version-Windows:
-      - 1.0.4
-      X-Sendcloud-Client-Latest-Version-Macos:
-      - 1.0.5
-      X-Sendcloud-Client-Latest-Version-Linux:
-      - 1.0.2
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
+      - max-age=31536000
       X-Content-Type-Options:
       - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
       X-Frame-Options:
       - DENY
       Vary:
       - Origin, Cookie
+      Content-Length:
+      - '105'
+      X-Envoy-Upstream-Service-Time:
+      - '51'
     body:
       encoding: UTF-8
       string: '{"error":{"code":404,"request":"api/v2/parcels/0/cancel","message":"No
         Parcel matches the given query."}}'
-  recorded_at: Thu, 19 Aug 2021 13:17:16 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Tue, 23 Jan 2024 12:08:12 GMT
+recorded_with: VCR 6.1.0

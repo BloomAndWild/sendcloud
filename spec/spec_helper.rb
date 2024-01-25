@@ -15,6 +15,23 @@ VCR.configure do |c|
   c.cassette_library_dir                    = "spec/support/fixtures/vcr_cassettes"
   c.allow_http_connections_when_no_cassette = true
   c.default_cassette_options                = { match_requests_on: [:uri] }
+
+  c.before_record do |interaction|
+    response = interaction.response
+
+    # This ensures that compressed responses are saved in
+    # a human-readable format instead of as binary data.
+    #
+    # decode_compressed_response: true in default_cassette_options
+    # doesn't seem to work.
+    if response
+         .headers
+         .fetch("Content-Type", [])
+         .include?("application/json; charset=utf-8")
+      response.body.force_encoding("UTF-8")
+    end
+  end
+
   # Filtering Basic auth credentials from VCR interaction.
   c.filter_sensitive_data("<BASIC_AUTH_CREDENTIALS>") do |interaction|
     auths = interaction.request.headers["Authorization"].first

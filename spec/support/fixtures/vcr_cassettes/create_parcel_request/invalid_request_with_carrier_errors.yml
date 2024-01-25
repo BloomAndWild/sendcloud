@@ -9,7 +9,7 @@ http_interactions:
         EE","telephone":"+31612345678","email":"hello@bloomandwild.com","data":[],"country":"NL","order_number":"1234567890","request_label":true,"shipment":{"id":98}}}'
     headers:
       User-Agent:
-      - Faraday v1.8.0
+      - Faraday v1.10.2
       Authorization:
       - Basic <BASIC_AUTH_CREDENTIALS>
       Content-Type:
@@ -23,37 +23,36 @@ http_interactions:
       code: 400
       message: Bad Request
     headers:
-      Date:
-      - Wed, 17 Nov 2021 11:48:40 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '115'
-      Connection:
-      - keep-alive
       Server:
-      - nginx
+      - envoy
+      Date:
+      - Tue, 23 Jan 2024 09:49:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
       Allow:
       - GET, POST, PUT, HEAD, OPTIONS
-      X-Sendcloud-Client-Latest-Version-Windows:
-      - 1.0.4
-      X-Sendcloud-Client-Latest-Version-Macos:
-      - 1.0.5
-      X-Sendcloud-Client-Latest-Version-Linux:
-      - 1.0.2
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
+      - max-age=31536000
       X-Content-Type-Options:
       - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
       X-Frame-Options:
       - DENY
       Vary:
       - Origin, Cookie
+      Content-Length:
+      - '303'
+      X-Envoy-Upstream-Service-Time:
+      - '760'
     body:
       encoding: UTF-8
       string: '{"error":{"code":400,"request":"api/v2/parcels","message":"non_field_errors:
-        \"PostNL service error: ''1225029''\""}}'
-  recorded_at: Wed, 17 Nov 2021 11:48:40 GMT
-recorded_with: VCR 6.0.0
+        \"Service error: Carrier response can not be parsed. Validation failed for
+        shipment: 3STXWW9670924, Messages:\n 3STXWW9670924: {[1225029]\nService is
+        not available for the requested postal code on this specific weekday}\n\""}}'
+  recorded_at: Tue, 23 Jan 2024 09:49:05 GMT
+recorded_with: VCR 6.1.0
